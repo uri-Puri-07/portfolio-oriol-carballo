@@ -32,8 +32,8 @@ La web compilada queda en la carpeta `dist/`.
 
 En `src/pages/index.astro` y `src/components/Footer.astro`, cambia estos enlaces por los tuyos:
 
-- `https://www.linkedin.com/`
-- `https://github.com/`
+- `https://www.linkedin.com/in/oriol-c-2888a1297`
+- `https://github.com/uri-Puri-07`
 - `mailto:oriol.carballo10@gmail.com`
 
 También puedes editar los proyectos en `src/components/Proyectos.astro` cuando tengas repositorios o demos reales.
