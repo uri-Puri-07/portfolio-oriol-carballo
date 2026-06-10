@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import Section_tecno from '../components/Section_tecno.astro';
+import Section_certificados from '../components/Section_certificados.astro';
+import Section_sobremi from '../components/Section_sobremi.astro';
+import Social_icons from '../components/Social_icons.astro';
+import Linkedin from '../icons/Social/Linkedin.astro';
+import Github from '../icons/Social/Github.astro';
+import Gmail from '../icons/Social/Gmail.astro';
+import CV from '../icons/Social/CV.astro';
+import Proyectos from '../components/Proyectos.astro';
+import Certificados from '../components/Certificados.astro';
+import Tecnologias from '../components/Tecnologias.astro';
+import Sobre_mi from '../components/Sobre_mi.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Portfolio | Oriol Carballo López"
+  description="Portfolio personal de Oriol Carballo López: formación, proyectos, tecnologías y certificaciones de informática, desarrollo web, SQL y ciberseguridad."
+>
+  <main id="top" class="px-4">
+    <Section class="pt-16 md:pt-24">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+        <div>
+          <p class="mb-4 inline-flex rounded-full border border-emerald-300/20 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-200" data-es="FP · Informática · Ciberseguridad" data-en="Vocational IT · Systems · Cybersecurity">
+            FP · Informática · Ciberseguridad
+          </p>
+
+          <h1 class="text-balance text-4xl font-black leading-tight tracking-tight text-white md:text-6xl">
+            <span data-es="Hola, soy" data-en="Hi, I'm">Hola, soy</span> <span class="text-sky-300">Oriol Carballo López</span>
+          </h1>
+
+          <p class="mt-6 max-w-3xl text-pretty text-lg leading-8 text-slate-300 md:text-xl" data-es="Portfolio personal enfocado en sistemas, desarrollo web, bases de datos y ciberseguridad. Aquí muestro mi formación, certificaciones y proyectos técnicos con un estilo claro, moderno y profesional." data-en="Personal portfolio focused on systems, web development, databases and cybersecurity. Here I share my education, certifications and technical projects with a clean, modern and professional style.">
+            Portfolio personal enfocado en sistemas, desarrollo web, bases de datos y ciberseguridad. Aquí muestro mi formación, certificaciones y proyectos técnicos con un estilo claro, moderno y profesional.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <Social_icons href="https://www.linkedin.com/">
+              <Linkedin class="size-5" /> LinkedIn
+            </Social_icons>
+            <Social_icons href="https://github.com/">
+              <Github class="size-5" /> GitHub
+            </Social_icons>
+            <Social_icons id="contacto" href="mailto:oriol.carballo10@gmail.com">
+              <Gmail class="size-5" /> <span data-es="Contacto" data-en="Contact">Contacto</span>
+            </Social_icons>
+            <Social_icons href="/certificates/matricula-honor-fp-2025.jpeg">
+              <CV class="size-5" /> <span data-es="Ver mérito académico" data-en="View academic merit">Ver mérito académico</span>
+            </Social_icons>
+          </div>
+        </div>
+
+        <aside class="rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-sky-950/30 backdrop-blur">
+          <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/60 p-6">
+            <p class="text-sm uppercase tracking-[0.3em] text-sky-300" data-es="Perfil" data-en="Profile">Perfil</p>
+            <h2 class="mt-4 text-2xl font-bold text-white" data-es="Técnico en formación constante" data-en="Technician in continuous learning">Técnico en formación constante</h2>
+            <p class="mt-4 leading-7 text-slate-300" data-es="Me interesa aprender haciendo: montar labs, documentar lo que pruebo y convertirlo en proyectos útiles para demostrar habilidades reales." data-en="I like learning by doing: building labs, documenting what I test and turning it into useful projects that show real skills.">
+              Me interesa aprender haciendo: montar labs, documentar lo que pruebo y convertirlo en proyectos útiles para demostrar habilidades reales.
+            </p>
+            <div class="mt-6 grid grid-cols-2 gap-3 text-sm">
+              <div class="rounded-2xl bg-white/5 p-4">
+                <span class="block text-2xl font-black text-emerald-300">5</span>
+                <span class="text-slate-300" data-es="certificados incluidos" data-en="certificates included">certificados incluidos</span>
+              </div>
+              <div class="rounded-2xl bg-white/5 p-4">
+                <span class="block text-2xl font-black text-sky-300">2025</span>
+                <span class="text-slate-300" data-es="matrícula de honor" data-en="honors distinction">matrícula de honor</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Section>
+
+    <Section id="proyectos">
+      <div class="mb-12 text-center">
+        <p class="text-sm font-bold uppercase tracking-[0.3em] text-sky-300" data-es="Trabajo práctico" data-en="Practical work">Trabajo práctico</p>
+        <h2 class="mt-3 text-4xl font-black text-white" data-es="Proyectos" data-en="Projects">Proyectos</h2>
+      </div>
+      <Proyectos />
+    </Section>
+
+    <Section_tecno id="tecnologias">
+      <Tecnologias />
+    </Section_tecno>
+
+    <Section_certificados id="certificados">
+      <div class="mb-12 text-center">
+        <p class="text-sm font-bold uppercase tracking-[0.3em] text-emerald-300" data-es="Formación verificada" data-en="Verified education">Formación verificada</p>
+        <h2 class="mt-3 text-4xl font-black text-white" data-es="Certificados" data-en="Certificates">Certificados</h2>
+      </div>
+      <Certificados />
+    </Section_certificados>
+
+    <Section_sobremi id="sobre-mi">
+      <Sobre_mi />
+    </Section_sobremi>
+
+    <Footer />
+  </main>
+</Layout>

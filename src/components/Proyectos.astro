@@ -1,0 +1,98 @@
+---
+import Html from '../icons/Tecnologias/Lenguajes/Html.astro';
+import Css from '../icons/Tecnologias/Lenguajes/Css.astro';
+import Js from '../icons/Tecnologias/Lenguajes/Js.astro';
+import Ast from '../icons/Tecnologias/Frameworks_Librerias/Ast.astro';
+import Tailwind from '../icons/Tecnologias/Frameworks_Librerias/Tailwind.astro';
+import Bash from '../icons/Tecnologias/Lenguajes/Bash.astro';
+import Mysql from '../icons/Tecnologias/Bases_de_datos/Mysql.astro';
+import Github from '../icons/Social/Github.astro';
+import Link from '../icons/Social/Link.astro';
+import Social_icons from './Social_icons.astro';
+
+const TAGS = {
+  Html: { name: 'HTML', class: 'bg-orange-500/15 text-orange-200 border-orange-400/20', icon: Html },
+  Css: { name: 'CSS', class: 'bg-sky-500/15 text-sky-200 border-sky-400/20', icon: Css },
+  Js: { name: 'JS', class: 'bg-yellow-500/15 text-yellow-100 border-yellow-400/20', icon: Js },
+  Astro: { name: 'Astro', class: 'bg-purple-500/15 text-purple-200 border-purple-400/20', icon: Ast },
+  Tailwind: { name: 'Tailwind', class: 'bg-cyan-500/15 text-cyan-100 border-cyan-400/20', icon: Tailwind },
+  Bash: { name: 'Bash', class: 'bg-slate-500/20 text-slate-100 border-slate-300/20', icon: Bash },
+  SQL: { name: 'SQL', class: 'bg-blue-500/15 text-blue-100 border-blue-400/20', icon: Mysql },
+};
+
+const PROJECTS = [
+  {
+    title: 'Portfolio personal con Astro',
+    titleEn: 'Personal portfolio with Astro',
+    description: 'Web para presentar mi perfil técnico, proyectos, tecnologías y certificados reales. Construida con Astro y Tailwind para que sea rápida, responsive y fácil de mantener.',
+    descriptionEn: 'Website to present my technical profile, projects, technologies and real certificates. Built with Astro and Tailwind so it is fast, responsive and easy to maintain.',
+    image: '/certificates/matricula-honor-fp-2025.jpeg',
+    tags: [TAGS.Astro, TAGS.Tailwind, TAGS.Html, TAGS.Css],
+  },
+  {
+    title: 'Laboratorio de ciberseguridad',
+    titleEn: 'Cybersecurity lab',
+    description: 'Proyecto orientado a redes y ciberseguridad, relacionado con SonicWall: conceptos de protección perimetral, configuración segura, filtrado y resolución de incidencias en entornos de red.',
+    descriptionEn: 'Project focused on networking and cybersecurity, related to SonicWall: perimeter protection concepts, secure configuration, filtering and troubleshooting in network environments.',
+    image: '/certificates/ciberseguridad-nivel-i-blearn.jpg',
+    tags: [TAGS.Bash],
+  },
+  {
+    title: 'Prácticas de SQL y bases de datos',
+    titleEn: 'SQL and database practice',
+    description: 'Ejercicios orientados a consultas relacionales: SELECT, WHERE, ORDER BY, funciones agregadas, subconsultas y JOINS.',
+    descriptionEn: 'Exercises focused on relational queries: SELECT, WHERE, ORDER BY, aggregate functions, subqueries and JOINS.',
+    image: '/certificates/sql-desde-cero-openwebinars.jpg',
+    tags: [TAGS.SQL],
+  },
+];
+---
+
+<div class="grid gap-8">
+  {PROJECTS.map(({ image, title, titleEn, description, descriptionEn, tags, link, github }) => (
+    <article class="grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-xl shadow-black/20 backdrop-blur md:grid-cols-[0.9fr_1.1fr]">
+      <div class="relative min-h-64 overflow-hidden bg-slate-900">
+        <img
+          alt={`Imagen del proyecto ${title}`}
+          data-alt-es={`Imagen del proyecto ${title}`}
+          data-alt-en={`Project image: ${titleEn}`}
+          class="h-full w-full object-cover object-center opacity-90 transition duration-500 hover:scale-105"
+          loading="lazy"
+          src={image}
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
+      </div>
+
+      <div class="flex flex-col justify-center p-6 md:p-8">
+        <h3 class="text-2xl font-black text-white" data-es={title} data-en={titleEn}>{title}</h3>
+        <p class="mt-4 text-pretty leading-7 text-slate-300" data-es={description} data-en={descriptionEn}>{description}</p>
+
+        <ul class="mt-5 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <li>
+              <span class={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold ${tag.class}`}>
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        {(github || link) && (
+          <footer class="mt-6 flex flex-wrap gap-3">
+            {github && (
+              <Social_icons href={github}>
+                <Github class="size-5" /> <span data-es="Código" data-en="Code">Código</span>
+              </Social_icons>
+            )}
+            {link && (
+              <Social_icons href={link}>
+                <Link class="size-4" /> Demo
+              </Social_icons>
+            )}
+          </footer>
+        )}
+      </div>
+    </article>
+  ))}
+</div>

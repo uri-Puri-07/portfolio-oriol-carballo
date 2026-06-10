@@ -1,0 +1,118 @@
+---
+import Header from '../components/Header.astro';
+import '@fontsource-variable/source-code-pro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { description, title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="fixed inset-0 -z-20 bg-slate-950"></div>
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_32%),radial-gradient(circle_at_85%_15%,rgba(34,197,94,0.13),transparent_30%),linear-gradient(180deg,#020617_0%,#0f172a_48%,#020617_100%)]"></div>
+    <Header />
+    <slot />
+    <script is:inline>
+      const pageMeta = {
+        es: {
+          title: 'Portfolio | Oriol Carballo López',
+          description:
+            'Portfolio personal de Oriol Carballo López: formación, proyectos, tecnologías y certificaciones de informática, desarrollo web, SQL y ciberseguridad.',
+        },
+        en: {
+          title: 'Portfolio | Oriol Carballo López',
+          description:
+            'Personal portfolio of Oriol Carballo López: education, projects, technologies and certifications in IT, web development, SQL and cybersecurity.',
+        },
+      };
+
+      const getInitialLanguage = () => {
+        const savedLanguage = localStorage.getItem('site-language');
+        return savedLanguage === 'en' || savedLanguage === 'es' ? savedLanguage : 'es';
+      };
+
+      const setLanguage = (language) => {
+        document.documentElement.lang = language;
+        document.title = pageMeta[language].title;
+        document
+          .querySelector('meta[name="description"]')
+          ?.setAttribute('content', pageMeta[language].description);
+
+        document.querySelectorAll('[data-es][data-en]').forEach((element) => {
+          element.textContent = element.dataset[language];
+        });
+
+        document.querySelectorAll('[data-alt-es][data-alt-en]').forEach((element) => {
+          element.setAttribute('alt', element.dataset[`alt${language === 'es' ? 'Es' : 'En'}`]);
+        });
+
+        const toggle = document.querySelector('[data-language-toggle]');
+        if (toggle) {
+          toggle.dataset.currentLanguage = language;
+          toggle.setAttribute(
+            'aria-label',
+            language === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish',
+          );
+        }
+
+        localStorage.setItem('site-language', language);
+      };
+
+      const currentLanguage = getInitialLanguage();
+      setLanguage(currentLanguage);
+
+      document.querySelector('[data-language-toggle]')?.addEventListener('click', () => {
+        const nextLanguage = document.documentElement.lang === 'es' ? 'en' : 'es';
+        setLanguage(nextLanguage);
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    font-family: 'Source Code Pro Variable', monospace;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    color: #f8fafc;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(56, 189, 248, 0.35);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

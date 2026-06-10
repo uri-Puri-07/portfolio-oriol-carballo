@@ -1,0 +1,97 @@
+---
+const certifications = [
+  {
+    title: 'Matrícula de honor FP',
+    titleEn: 'Vocational IT honors distinction',
+    issuer: 'Escola Pia Santa Anna de Mataró',
+    date: 'Junio 2025',
+    dateEn: 'June 2025',
+    image: '/certificates/matricula-honor-fp-2025.jpeg',
+    link: '/certificates/matricula-honor-fp-2025.jpeg',
+    description: 'Reconocimiento académico como graduado con matrícula de honor.',
+    descriptionEn: 'Academic recognition as an honors graduate.',
+    featured: true,
+  },
+  {
+    title: 'Curso de SQL desde Cero',
+    titleEn: 'SQL from Scratch course',
+    issuer: 'OpenWebinars',
+    date: '08 julio 2025 · 7 horas',
+    dateEn: 'July 08, 2025 · 7 hours',
+    image: '/certificates/sql-desde-cero-openwebinars.jpg',
+    link: '/certificates/sql-desde-cero-openwebinars.pdf',
+    description: 'Bases de datos relacionales, consultas SELECT, filtros, agrupaciones, subconsultas y JOINS.',
+    descriptionEn: 'Relational databases, SELECT queries, filters, grouping, subqueries and JOINS.',
+  },
+  {
+    title: 'Certified Engineer',
+    titleEn: 'Certified Engineer',
+    issuer: 'Hornetsecurity',
+    date: '03/10/25',
+    dateEn: 'October 03, 2025',
+    image: '/certificates/hornetsecurity-certified-engineer.jpg',
+    link: '/certificates/hornetsecurity-certified-engineer.pdf',
+    description: 'Servicios de correo electrónico, soluciones de seguridad, configuraciones complejas y resolución de problemas.',
+    descriptionEn: 'Email services, security solutions, complex configurations and troubleshooting.',
+  },
+  {
+    title: 'Ciberseguridad NIVEL I',
+    titleEn: 'Cybersecurity Level I',
+    issuer: 'bLearn · SonicWall · Bytemaster',
+    date: '02 julio 2024',
+    dateEn: 'July 02, 2024',
+    image: '/certificates/ciberseguridad-nivel-i-blearn.jpg',
+    link: '/certificates/ciberseguridad-nivel-i-blearn.pdf',
+    description: 'Finalización de formación inicial en ciberseguridad.',
+    descriptionEn: 'Completion of introductory cybersecurity training.',
+  },
+  {
+    title: 'Curso de HTML5 y CSS3',
+    titleEn: 'HTML5 and CSS3 course',
+    issuer: 'OpenWebinars',
+    date: '04 noviembre 2024 · 10 horas',
+    dateEn: 'November 04, 2024 · 10 hours',
+    image: '/certificates/html5-css3-openwebinars.jpg',
+    link: '/certificates/html5-css3-openwebinars.pdf',
+    description: 'HTML semántico, formularios, accesibilidad, CSS3, selectores, modelo de caja y optimización.',
+    descriptionEn: 'Semantic HTML, forms, accessibility, CSS3, selectors, box model and optimization.',
+  },
+];
+---
+
+<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+  {certifications.map((cert) => (
+    <article class={`group relative overflow-hidden rounded-3xl border bg-slate-900/70 p-4 shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-sky-300/40 ${cert.featured ? 'border-emerald-300/40 md:col-span-2 xl:col-span-1' : 'border-white/10'}`}>
+      <div class="absolute inset-0 bg-gradient-to-br from-sky-400/10 via-transparent to-emerald-400/10 opacity-0 transition group-hover:opacity-100"></div>
+
+      <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60">
+        <img
+          src={cert.image}
+          alt={`Certificado: ${cert.title}`}
+          data-alt-es={`Certificado: ${cert.title}`}
+          data-alt-en={`Certificate: ${cert.titleEn}`}
+          class="h-56 w-full object-cover object-center transition duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="relative mt-5">
+        <div class="mb-3 flex flex-wrap gap-2">
+          {cert.featured && <span class="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-bold text-emerald-200" data-es="Destacado" data-en="Featured">Destacado</span>}
+          <span class="rounded-full bg-sky-400/15 px-3 py-1 text-xs font-bold text-sky-200">{cert.issuer}</span>
+        </div>
+        <h3 class="text-xl font-black text-white" data-es={cert.title} data-en={cert.titleEn}>{cert.title}</h3>
+        <p class="mt-2 text-sm font-semibold text-slate-400" data-es={cert.date} data-en={cert.dateEn}>{cert.date}</p>
+        <p class="mt-4 min-h-20 text-sm leading-6 text-slate-300" data-es={cert.description} data-en={cert.descriptionEn}>{cert.description}</p>
+        <a
+          href={cert.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-5 inline-flex rounded-full bg-white px-5 py-2 text-sm font-black text-slate-950 transition hover:bg-sky-200"
+        >
+          <span data-es="Ver certificado" data-en="View certificate">Ver certificado</span>
+        </a>
+      </div>
+    </article>
+  ))}
+</div>

@@ -1,0 +1,65 @@
+---
+const groups = [
+  {
+    title: 'Lenguajes',
+    titleEn: 'Languages',
+    items: [
+      ['HTML5', 'logos:html-5'],
+      ['CSS3', 'logos:css-3'],
+      ['JavaScript', 'logos:javascript'],
+      ['Bash', 'logos:bash-icon'],
+      ['Python', 'logos:python'],
+    ],
+  },
+  {
+    title: 'Frameworks y estilos',
+    titleEn: 'Frameworks and styling',
+    items: [
+      ['Astro', 'skill-icons:astro'],
+      ['Tailwind CSS', 'logos:tailwindcss-icon'],
+      ['Bootstrap', 'logos:bootstrap'],
+    ],
+  },
+  {
+    title: 'Bases de datos',
+    titleEn: 'Databases',
+    items: [
+      ['SQL', 'vscode-icons:file-type-sql'],
+      ['MySQL', 'logos:mysql'],
+    ],
+  },
+  {
+    title: 'Sistemas y herramientas',
+    titleEn: 'Systems and tools',
+    items: [
+      ['Linux', 'flat-color-icons:linux'],
+      ['Git', 'logos:git-icon'],
+      ['VS Code', 'logos:visual-studio-code'],
+      ['Ciberseguridad', 'carbon:security', 'Cybersecurity'],
+    ],
+  },
+];
+---
+
+<div>
+  <div class="mb-12 text-center">
+    <p class="text-sm font-bold uppercase tracking-[0.3em] text-sky-300" data-es="Stack técnico" data-en="Technical stack">Stack técnico</p>
+    <h2 class="mt-3 text-4xl font-black text-white" data-es="Tecnologías" data-en="Technologies">Tecnologías</h2>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    {groups.map((group) => (
+      <section class="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-xl shadow-black/20 backdrop-blur">
+        <h3 class="text-xl font-black text-white" data-es={group.title} data-en={group.titleEn}>{group.title}</h3>
+        <div class="mt-6 flex flex-wrap gap-4">
+          {group.items.map(([name, icon, nameEn]) => (
+            <div class="group flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3 transition hover:-translate-y-1 hover:border-sky-300/40 hover:bg-slate-900">
+              <img src={`https://api.iconify.design/${icon}.svg`} alt={name} class="size-8 transition group-hover:scale-110" loading="lazy" />
+              <span class="text-sm font-bold text-slate-200" data-es={name} data-en={nameEn ?? name}>{name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</div>
